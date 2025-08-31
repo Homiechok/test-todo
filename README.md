@@ -1,69 +1,51 @@
-# React + TypeScript + Vite
+# 📝 Test Todo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Небольшое приложение **Todo List**, выполненное на React + TypeScript + Vite с использованием TailwindCSS.  
+Проект реализует базовый функционал работы со списком задач и подходит для демонстрации навыков работы с современным фронтенд-стеком в соответствии с ТЗ (https://docs.google.com/document/d/1X9zMnAAU9vvEzdYtSEeeram8Kur5o-py5ChKlK5TIa8/edit?tab=t.0).
 
-Currently, two official plugins are available:
+## ✨ Возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Добавление новых задач
+- Отметка выполнения задачи (checkbox)
+- Фильтрация списка: **All / Active / Completed**
+- Очистка завершённых задач
+- Адаптивная и минималистичная стилизация на TailwindCSS
+- Unit-тесты с использованием **Vitest + React Testing Library**
 
-## Expanding the ESLint configuration
+## 🚀 Демо
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Приложение доступно по адресу:  
+👉 [https://Homiechok.github.io/test-todo](https://Homiechok.github.io/test-todo)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Технологии
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- ⚛️ **React 19**  
+- 📘 **TypeScript**  
+- ⚡ **Vite**  
+- 🎨 **TailwindCSS**  
+- 🧪 **Vitest + React Testing Library**  
+- 🌐 **GitHub Pages** (для деплоя)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🔧 Установка и запуск
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Склонировать репозиторий и перейти в папку проекта:
+```git clone https://github.com/Homiechok/test-todo.git```
+```cd test-todo```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Установить зависимости:
+```npm install```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Запуск в режиме разработки:
+```npm run start```
+
+Сборка проекта:
+```npm run build```
+
+Запуск unit-тестов:
+```npm run test```
+
+## 🔮 Что можно улучшить
+
+- Локальное хранение (localStorage).
+- Редактирование и удаление конкретной задачи.
+- Drag & Drop сортировка задач.
