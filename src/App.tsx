@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState } from "react";
 import type { Filter, Todo } from "./types.ts";
 import Footer from "./components/Footer.tsx";
@@ -42,12 +41,23 @@ export default function App() {
     );
   };
 
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "Active") return !todo.completed;
+    if (filter === "Completed") return todo.completed;
+    return true;
+  });
+
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">todos</h1>
+    <div className="p-4 max-w-4/10 mx-auto">
+      <h1 className="text-5xl font-bold mb-4 text-center text-gray-400">todos</h1>
       <TodoInput onAdd={addTodo} />
-      <TodoList todos={todos} onToggle={toggleTodo} />
-      <Footer filter={filter} />
+      <TodoList todos={filteredTodos} onToggle={toggleTodo} />
+      <Footer
+        filter={filter}
+        setFilter={setFilter}
+        todos={todos}
+        clearCompleted={() => setTodos(todos.filter((todo) => !todo.completed))}
+      />
     </div>
   );
 }

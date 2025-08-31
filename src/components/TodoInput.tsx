@@ -23,9 +23,14 @@ export default function TodoInput(props: PropsType) {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-        className="bg-blue-500 text-white px-3 py-1 rounded w-full"
+        className="border border-gray-500 rounded px-2 py-1 flex-1"
       />
-      <button onClick={handleSubmit}>Add</button>
+      <button
+        onClick={handleSubmit}
+        className="bg-blue-500 text-white px-3 py-1 rounded cursor-pointer"
+      >
+        Add
+      </button>
     </div>
   );
 }

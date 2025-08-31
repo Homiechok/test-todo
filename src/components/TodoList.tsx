@@ -10,11 +10,11 @@ export default function TodoList(props: PropsType) {
   const { todos, onToggle } = props;
 
   if (todos.length === 0) {
-    return <p className="text-gray-500">Нет задач</p>;
+    return <p className="text-gray-500 p-4">Нет задач</p>;
   }
 
   return (
-    <ul className="mb-4">
+    <ul className="p-4">
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} onToggle={onToggle} />
       ))}
