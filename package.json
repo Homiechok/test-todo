@@ -5,13 +5,13 @@
   "type": "module",
   "homepage": "https://Homiechok.github.io/test-todo",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
+    "lint": "eslint .",
+    "test": "vitest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "test": "vitest"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",
