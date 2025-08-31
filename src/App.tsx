@@ -5,23 +5,7 @@ import TodoList from "./components/TodoList.tsx";
 import TodoInput from "./components/TodoInput.tsx";
 
 export default function App() {
-  const [todos, setTodos] = useState<Todo[]>([
-    {
-      id: 1,
-      text: "123",
-      completed: true,
-    },
-    {
-      id: 2,
-      text: "1123",
-      completed: false,
-    },
-    {
-      id: 3,
-      text: "11123",
-      completed: true,
-    },
-  ]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState<Filter>("All");
 
   const addTodo = (text: string) => {
@@ -48,8 +32,10 @@ export default function App() {
   });
 
   return (
-    <div className="p-4 max-w-4/10 mx-auto">
-      <h1 className="text-5xl font-bold mb-4 text-center text-gray-400">todos</h1>
+    <div className="p-4 max-w-[40%] mx-auto">
+      <h1 className="text-5xl font-bold mb-4 text-center text-gray-400">
+        todos
+      </h1>
       <TodoInput onAdd={addTodo} />
       <TodoList todos={filteredTodos} onToggle={toggleTodo} />
       <Footer
