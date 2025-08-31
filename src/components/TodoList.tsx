@@ -14,7 +14,7 @@ export default function TodoList(props: PropsType) {
   }
 
   return (
-    <ul className="p-4">
+    <ul role="list" aria-label="Todo list" className="p-4">
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} onToggle={onToggle} />
       ))}

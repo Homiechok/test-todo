@@ -7,7 +7,7 @@ describe("TodoInput", () => {
     const handleAdd = vi.fn();
     render(<TodoInput onAdd={handleAdd} />);
 
-    const input = screen.getByPlaceholderText(/Что необходимо сделать?/i);
+    const input = screen.getByPlaceholderText(/What need to be done/i);
 
     fireEvent.change(input, { target: { value: "qwerty" } });
     fireEvent.keyDown(input, { key: "Enter" });

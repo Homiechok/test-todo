@@ -14,12 +14,13 @@ export default function Footer(props: PropsType) {
 
   return (
     <div className="flex justify-between items-center gap-5 text-sm text-gray-600">
-      <span>{remaining} items left</span>
-      <div className="flex gap-2">
+      <span aria-live="polite">{remaining} items left</span>
+      <nav role="radiogroup" aria-label="Todo filters" className="flex gap-2">
         <button
           type="button"
+          role="radio"
+          aria-checked={filter === "All"}
           onClick={() => setFilter("All")}
-          disabled={filter === "All"}
           className={`px-3 py-1 rounded border transition cursor-pointer ${
             filter === "All"
               ? "bg-amber-500 text-white border-amber-600"
@@ -30,8 +31,9 @@ export default function Footer(props: PropsType) {
         </button>
         <button
           type="button"
+          role="radio"
+          aria-checked={filter === "Active"}
           onClick={() => setFilter("Active")}
-          disabled={filter === "Active"}
           className={`px-3 py-1 rounded border transition cursor-pointer ${
             filter === "Active"
               ? "bg-blue-500 text-white border-blue-600"
@@ -42,8 +44,9 @@ export default function Footer(props: PropsType) {
         </button>
         <button
           type="button"
+          role="radio"
+          aria-checked={filter === "Completed"}
           onClick={() => setFilter("Completed")}
-          disabled={filter === "Completed"}
           className={`px-3 py-1 rounded border transition cursor-pointer ${
             filter === "Completed"
               ? "bg-green-500 text-white border-green-600"
@@ -52,7 +55,7 @@ export default function Footer(props: PropsType) {
         >
           Completed
         </button>
-      </div>
+      </nav>
       <button
         type="button"
         onClick={clearCompleted}

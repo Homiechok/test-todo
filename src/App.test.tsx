@@ -4,7 +4,7 @@ import { fireEvent, screen, render } from "@testing-library/react";
 it("Filter active and completed todo", () => {
   render(<App />);
 
-  const input = screen.getByPlaceholderText(/Что необходимо сделать?/i);
+  const input = screen.getByPlaceholderText(/What need to be done/i);
 
   fireEvent.change(input, { target: { value: "Todo 1" } });
   fireEvent.keyDown(input, { key: "Enter" });
@@ -14,18 +14,18 @@ it("Filter active and completed todo", () => {
   const checkboxes = screen.getAllByRole("checkbox");
   fireEvent.click(checkboxes[0]);
 
-  fireEvent.click(screen.getByText(/Active/i));
+  fireEvent.click(screen.getByRole("radio", { name: /Active/i }));
   expect(screen.getByText("Todo 2")).toBeInTheDocument();
   expect(screen.queryByText("Todo 1")).not.toBeInTheDocument();
 
-  fireEvent.click(screen.getByRole("button", { name: /^Completed$/i }));
+  fireEvent.click(screen.getByRole("radio", { name: /Completed/i }));
   expect(screen.getByText("Todo 1")).toBeInTheDocument();
 });
 
 it("Clear completed todo", () => {
   render(<App />);
 
-  const input = screen.getByPlaceholderText(/Что необходимо сделать?/i);
+  const input = screen.getByPlaceholderText(/What need to be done?/i);
 
   fireEvent.change(input, { target: { value: "test123" } });
   fireEvent.keyDown(input, { key: "Enter" });
