@@ -15,7 +15,7 @@ export default function App() {
     {
       id: 2,
       text: "1123",
-      completed: true,
+      completed: false,
     },
     {
       id: 3,
@@ -25,11 +25,28 @@ export default function App() {
   ]);
   const [filter, setFilter] = useState<Filter>("All");
 
+  const addTodo = (text: string) => {
+    const newTodo = {
+      id: Date.now(),
+      text,
+      completed: false,
+    };
+    setTodos([...todos, newTodo]);
+  };
+
+  const toggleTodo = (id: number) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
+  };
+
   return (
-    <div className="app">
-      <h1>todos</h1>
-      <TodoInput />
-      <TodoList todos={todos} />
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">todos</h1>
+      <TodoInput onAdd={addTodo} />
+      <TodoList todos={todos} onToggle={toggleTodo} />
       <Footer filter={filter} />
     </div>
   );

@@ -3,9 +3,21 @@ import type { Todo } from "../types.ts";
 
 type PropsType = {
   todos: Todo[];
+  onToggle: (id: number) => void;
 };
 
 export default function TodoList(props: PropsType) {
-  const { todos } = props;
-  return todos.map((todo) => <TodoItem todo={todo} />);
+  const { todos, onToggle } = props;
+
+  if (todos.length === 0) {
+    return <p className="text-gray-500">Нет задач</p>;
+  }
+
+  return (
+    <ul className="mb-4">
+      {todos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} onToggle={onToggle} />
+      ))}
+    </ul>
+  );
 }
