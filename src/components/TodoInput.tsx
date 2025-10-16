@@ -1,17 +1,13 @@
 import { useState } from "react";
+import { useTodoStore } from "../store/todoStore.ts";
 
-type PropsType = {
-  onAdd: (text: string) => void;
-};
-
-export default function TodoInput(props: PropsType) {
-  const { onAdd } = props;
-
+export default function TodoInput() {
   const [value, setValue] = useState("");
+  const { addTodo } = useTodoStore();
 
   const handleSubmit = () => {
     if (value.trim() === "") return;
-    onAdd(value.trim());
+    addTodo(value.trim());
     setValue("");
   };
 

@@ -1,14 +1,7 @@
-import type { Filter, Todo } from "../types.ts";
+import { useTodoStore } from "../store/todoStore.ts";
 
-type PropsType = {
-  filter: Filter;
-  setFilter: (filter: Filter) => void;
-  todos: Todo[];
-  clearCompleted: () => void;
-};
-
-export default function Footer(props: PropsType) {
-  const { filter, setFilter, todos, clearCompleted } = props;
+export default function Footer() {
+  const { todos, filter, setFilter, clearCompleted } = useTodoStore();
 
   const remaining = todos.filter((todo) => !todo.completed).length;
 
