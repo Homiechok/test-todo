@@ -1,4 +1,6 @@
 import type { Todo } from "../types.ts";
+import { useTodoStore } from "../store/todoStore.ts";
+import { EditableLabel } from "./EditableLabel.tsx";
 
 type PropsType = {
   todo: Todo;
@@ -7,6 +9,16 @@ type PropsType = {
 
 export default function TodoItem(props: PropsType) {
   const { todo, onToggle } = props;
+  const { removeTodo, updateTodo } = useTodoStore();
+
+  const handleDelete = () => {
+    removeTodo(todo.id);
+  };
+
+  const handleUpdate = (newText: string) => {
+    updateTodo(todo.id, newText);
+  };
+
   return (
     <li className="flex items-center gap-2 py-1">
       <input
@@ -25,12 +37,27 @@ export default function TodoItem(props: PropsType) {
           transition
         "
       />
-      <label
-        htmlFor={`todo-${todo.id}`}
-        className={todo.completed ? "line-through text-gray-400" : ""}
+      <EditableLabel label={todo.text} onChange={handleUpdate} />
+      <button
+        type="button"
+        title="Удалить"
+        onClick={handleDelete}
+        className="
+          ml-auto
+          bg-red-500
+          hover:bg-red-600
+          text-white
+          rounded
+          w-6 h-6
+          flex items-center justify-center
+          transition
+          duration-200
+          cursor-pointer
+          shadow-sm
+        "
       >
-        {todo.text}
-      </label>
+        ×
+      </button>
     </li>
   );
 }
